@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import courseService from '../services/CourseService'
+import './CourseRowComponent'
 
 export default class CourseCardComponent extends React.Component {
   state = {
@@ -27,8 +28,8 @@ export default class CourseCardComponent extends React.Component {
 
   render() {
     return(
-      <tr className={this.state.editing ? 'table-primary' : ''}>
-        <td>
+        <div class="wrapper">
+        <p>
           {
             !this.state.editing &&
               <Link to={`/editor/${this.state.course._id}`}>
@@ -42,10 +43,10 @@ export default class CourseCardComponent extends React.Component {
               onChange={(event) => this.updateCourseTitle(event.target.value)}
               value={this.state.course.title}/>
           }
-        </td>
-        <td>{this.state.course.owner}</td>
-        <td>{this.state.course.modified}</td>
-        <td>
+        </p>
+        <p>Owner: {this.state.course.owner}</p>
+        <p>Modified: {this.state.course.modified}</p>
+        <p>
           {
             !this.state.editing &&
             <button
@@ -66,8 +67,8 @@ export default class CourseCardComponent extends React.Component {
                 Delete</button>
             </span>
           }
-        </td>
-      </tr>
+        </p>
+        </div>
     )
   }
 }

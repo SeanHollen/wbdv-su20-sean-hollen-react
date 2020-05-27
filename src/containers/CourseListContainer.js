@@ -27,8 +27,12 @@ class CourseListContainer
     }
   }
 
-  setLayout = (layout) => {
-    this.props.history.push(`/${layout}/courses`)
+  toggleLayout = () => {
+    if (this.props.location.pathname == "/table/courses") {
+      this.props.history.push(`/grid/courses`);
+    } else {
+      this.props.history.push(`/table/courses`);
+    }
   }
 
   deleteCourse = (courseToDelete) =>
@@ -72,7 +76,7 @@ class CourseListContainer
       </div>
       <div>
         <button class="btn btn-light" onClick={() =>
-          this.setLayout('grid')}>
+          this.toggleLayout()}>
           grid
         </button>
         <button class="btn btn-light">
@@ -94,11 +98,6 @@ class CourseListContainer
         {
           this.state.layout === 'grid' &&
           <div>
-            <button
-              onClick={() =>
-                this.setLayout('table')}>
-              Table
-            </button>
             <CourseGridComponent courses={this.state.courses} />
           </div>
         }

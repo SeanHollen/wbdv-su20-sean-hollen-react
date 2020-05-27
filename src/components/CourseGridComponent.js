@@ -1,33 +1,18 @@
 import React from "react";
-import CourseRowComponent from "./CourseRowComponent";
+import CourseCardComponent from "./CourseCardComponent";
 
 export default class CourseGridComponent extends React.Component {
   render() {
     return(
-      <div>
-      
-      <table class="table table-striped">
-      <tbody>
-        <tr class="table-dark wbdv-row wbdv-course">
-            <th class="wbdv-header wbdv-title">
-                <i class="fa fa-file-text wbdv-row wbdv-icon"></i>
-                Title</th>
-            <th class="wbdv-header wbdv-owner">Owner</th>
-            <th class="wbdv-header wbdv-last-modified">Date</th>
-            <th>Edit</th>
-        </tr>
-        {
+      <div class="grid">
+          {
           this.props.courses.map(course =>
-            <CourseRowComponent
+            <CourseCardComponent
               deleteCourse={this.props.deleteCourse}
               key={course._id}
               course={course}/>
         )}
-      </tbody>
-      </table>
-
-      </div>
-      
+      </div>      
     )
   }
 }

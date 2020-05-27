@@ -40,3 +40,16 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  padding: 10px; 
+  background-color: #EDF5FD;
+  border: 1px solid grey;
+  margin: 10px; 
+  display: inline-block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+}
