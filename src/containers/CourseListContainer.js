@@ -4,8 +4,7 @@ import CourseGridComponent from "../components/CourseGridComponent";
 import courseService from "../services/CourseService"
 
 class CourseListContainer
-  extends React.Component
-{
+  extends React.Component {
   state = {
     layout: this.props.match.params.layout,
     courses: [],
@@ -21,7 +20,7 @@ class CourseListContainer
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevProps.match.params.layout !== this.props.match.params.layout) {
+    if (prevProps.match.params.layout !== this.props.match.params.layout) {
       this.setState({
         layout: this.props.match.params.layout
       })
@@ -39,51 +38,57 @@ class CourseListContainer
           .courses.filter(course => course !== courseToDelete)
       })))
 
-  addCourse = (title) =>
+  addCourse = (title) => {
+    console.log("HI");
     courseService.createCourse({
       title: title,
       owner: 'me',
-      modified: (new Date()).toDateString()
+      day: (new Date()).toDateString()
     })
       .then(theActualNewCourse =>
         this.setState((prevState) => {
-        return {
-          courses: [
-            ...prevState.courses,
-            theActualNewCourse
-          ]
-        }
-      }))
+          return {
+            courses: [
+              ...prevState.courses,
+              theActualNewCourse
+            ]
+          }
+        }))
+  }
+
 
   render() {
 
     console.log(this.props)
 
-    return(
+    return (
       <div>
-        <h2>Course List {this.state.courses.length}</h2>
-        <input
-          onChange={(event) => this.setState({
-            newCourseTitle: event.target.value
-          })}
-          value={this.state.newCourseTitle}
-          placeholder="Course Title"/>
-        <button onClick={
-          () => this.addCourse(this.state.newCourseTitle)}>
-          Add Course
+      <nav class="navbar navbar-dark bg-dark">
+      <div>
+        <button class="btn btn-light">
+          menu
         </button>
-        <br/>
+        <a class="navbar-brand wbdv-label wbdv-course-manager">Course Manager</a>
+      </div>
+      <div>
+        <button class="btn btn-light" onClick={() =>
+          this.setLayout('grid')}>
+          grid
+        </button>
+        <button class="btn btn-light">
+          list
+    </button>
+    <button class="btn btn-light">
+            sort
+    </button>
+      </div>
+    </nav>
         {
           this.state.layout === 'table' &&
           <div>
-            <button
-              onClick={() =>
-                this.setLayout('grid')}>
-              Grid
-            </button>
             <CourseTableComponent
               deleteCourse={this.deleteCourse}
-              courses={this.state.courses}/>
+              courses={this.state.courses} />
           </div>
         }
         {
@@ -94,11 +99,21 @@ class CourseListContainer
                 this.setLayout('table')}>
               Table
             </button>
-            <CourseGridComponent courses={this.state.courses}/>
+            <CourseGridComponent courses={this.state.courses} />
           </div>
         }
+        <form class="form-inline">
+          <input class="form-control mr-sm-2 wbdv-field wbdv-new-course"
+            type="CourseName" placeholder="Course Name" aria-label="Course Name"></input>
+          <button class="wbdv-bottom-right-10px btn btn-light wbdv-button wbdv-add-course"
+            onClick={
+              () => this.addCourse(this.state.newCourseTitle)}>
+            Add Course
+        </button>
+        </form>
       </div>
     )
+
   }
 }
 
