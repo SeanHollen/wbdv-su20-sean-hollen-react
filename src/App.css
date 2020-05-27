@@ -53,3 +53,24 @@ body {
   display: grid;
   grid-template-columns: 300px 300px 300px;
 }
+
+h1 {
+  margin: 0;
+    display: inline-block;
+}
+
+.wbdv-close {
+  margin-bottom: 20px; 
+}
+
+#wbdv-close {
+  vertical-align: bottom;
+} 
+
+.wbdv-module-item-delete-btn {
+  float: right; 
+}
+
+button {
+  margin: 3px; 
+}

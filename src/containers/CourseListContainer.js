@@ -2,6 +2,7 @@ import React from "react";
 import CourseTableComponent from "../components/CourseTableComponent";
 import CourseGridComponent from "../components/CourseGridComponent";
 import courseService from "../services/CourseService"
+import {Link} from "react-router-dom";
 
 class CourseListContainer
   extends React.Component {
@@ -25,6 +26,11 @@ class CourseListContainer
         layout: this.props.match.params.layout
       })
     }
+    courseService.findAllCourses()
+      .then(actualArrayOfCourses =>
+        this.setState({
+          courses: actualArrayOfCourses
+        }))
   }
 
   toggleLayout = () => {
@@ -33,6 +39,14 @@ class CourseListContainer
     } else {
       this.props.history.push(`/table/courses`);
     }
+  }
+
+  gridLayout = () => {
+    this.props.history.push(`/grid/courses`);
+  }
+
+  tableLayout = () => {
+    this.props.history.push(`/table/courses`);
   }
 
   deleteCourse = (courseToDelete) =>
@@ -69,21 +83,24 @@ class CourseListContainer
       <div>
       <nav class="navbar navbar-dark bg-dark">
       <div>
-        <button class="btn btn-light">
-          menu
+      <Link to="../">
+      <button class="btn btn-light">
+        <i class="fa fa-bars wbdv-field wbdv-hamburger"></i>
         </button>
+      </Link>
         <a class="navbar-brand wbdv-label wbdv-course-manager">Course Manager</a>
       </div>
       <div>
         <button class="btn btn-light" onClick={() =>
-          this.toggleLayout()}>
-          grid
+          this.gridLayout()}>
+          <i class="fa fa-table wbdv-button wbdv-grid-layout"></i>
         </button>
-        <button class="btn btn-light">
-          list
+        <button class="btn btn-light" onClick={() =>
+          this.tableLayout()}>
+        <i class="fa fa-list-ul wbdv-button wbdv-list-layout"></i>
     </button>
     <button class="btn btn-light">
-            sort
+      <i class="fa fa-sort"></i>
     </button>
       </div>
     </nav>
@@ -104,10 +121,10 @@ class CourseListContainer
         <form class="form-inline">
           <input class="form-control mr-sm-2 wbdv-field wbdv-new-course"
             type="CourseName" placeholder="Course Name" aria-label="Course Name"></input>
-          <button class="wbdv-bottom-right-10px btn btn-light wbdv-button wbdv-add-course"
+          <button type="button" class="wbdv-bottom-right-10px btn btn-light wbdv-button wbdv-add-course"
             onClick={
               () => this.addCourse(this.state.newCourseTitle)}>
-            Add Course
+              <i class="fa fa-plus"></i>
         </button>
         </form>
       </div>
