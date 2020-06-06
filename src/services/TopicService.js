@@ -1,4 +1,4 @@
-const createTopid = (topic) => 
+const createTopic = (topic) => 
   fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/topics", {
     method: 'POST',
     body: JSON.stringify(topic),

@@ -59,12 +59,14 @@ export default class CourseCardComponent extends React.Component {
             this.state.editing &&
             <span>
               <button onClick={this.ok}>
-                Ok</button>
+                Ok
+              </button>
               <button
                 className="btn btn-danger"
                 onClick={
                   () => this.props.deleteCourse(this.props.course)}>
-                Delete</button>
+                Delete
+              </button>
             </span>
           }
         </p>

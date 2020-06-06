@@ -13,6 +13,6 @@ export default class CourseGridComponent extends React.Component {
               course={course}/>
         )}
       </div>      
-    )
+    ) 
   }
 }
