@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import lessonService from "../services/LessonService"
-import moduleService from "../services/ModuleService"
-import topicService from "../services/TopicService"
+import courseService from "../services/CourseService"
 import ModuleList from "./ModuleList";
 import TopicPills from "./TopicPills"; 
 import LessonTabs from "./LessonTabs"; 
@@ -19,7 +17,8 @@ const CourseEditor = ({ match }) => {
           </button>
         </Link>
         <h1 class="wbdv-course-title">
-          {match.params.courseId}</h1>
+          course title
+          </h1>
         <div class="row">
           <ModuleList></ModuleList>
           <div class="col-8">

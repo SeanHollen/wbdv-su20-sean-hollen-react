@@ -1,4 +1,4 @@
-const createCourse = (course) => 
+const createCourse = (course) =>
   fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/courses", {
     method: 'POST',
     body: JSON.stringify(course),
@@ -24,7 +24,10 @@ const deleteCourse = (courseId) =>
   })
     .then(response => response.json())
 
-const findCourseById = (courseId) => {}
+const findCourseById = (courseId) =>
+  fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/courses" + courseId)
+    .then(response => response.json())
+    
 const findAllCourses = () =>
   fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/courses")
     .then(response => response.json())

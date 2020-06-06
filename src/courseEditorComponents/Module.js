@@ -1,15 +1,24 @@
 import React from "react";
 
-const Module = ({name, isActive}) => {
-    if (isActive) {
-        return <a href="#" class="list-group-item wbdv-module-item active">
+const Module = ({name, isActive, selected}) => {
+    let c = "list-group-item wbdv-module-item " + isActive;
+    if (!selected) {
+        return <a href="#" class={c}>
         <span class="wbdv-module-item-title">{name}</span>
-        <button class="wbdv-module-item-delete-btn">X</button>
     </a>
     }
-    return <a href="#" class="list-group-item wbdv-module-item">
-        <span class="wbdv-module-item-title">{name}</span>
-        <button class="wbdv-module-item-delete-btn">X</button>
+    return <a href="#" class={c}>
+        <span>
+                <input onChange={(event) => null} value={name} size="10"/>
+                <button onClick={null}>
+                    Ok
+                </button>
+                <button
+                    onClick={
+                        () => this.props.deleteCourse(this.props.course)}>
+                    X
+                </button>
+        </span>
     </a>
 }
 
