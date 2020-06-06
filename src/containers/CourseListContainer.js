@@ -4,7 +4,7 @@ import CourseGridComponent from "../components/CourseGridComponent";
 import courseService from "../services/CourseService"
 import {Link} from "react-router-dom";
 
-class CourseListContainer
+class CourseListContainer 
   extends React.Component {
   state = {
     layout: this.props.match.params.layout,
@@ -18,7 +18,7 @@ class CourseListContainer
         this.setState({
           courses: actualArrayOfCourses
         }))
-  }
+      }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.match.params.layout !== this.props.match.params.layout) {
@@ -26,11 +26,6 @@ class CourseListContainer
         layout: this.props.match.params.layout
       })
     }
-    courseService.findAllCourses()
-      .then(actualArrayOfCourses =>
-        this.setState({
-          courses: actualArrayOfCourses
-        }))
   }
 
   toggleLayout = () => {
@@ -57,7 +52,6 @@ class CourseListContainer
       })))
 
   addCourse = (title) => {
-    console.log("HI");
     courseService.createCourse({
       title: title,
       owner: 'me',
@@ -73,7 +67,6 @@ class CourseListContainer
           }
         }))
   }
-
 
   render() {
 

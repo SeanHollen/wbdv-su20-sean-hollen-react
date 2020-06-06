@@ -1,4 +1,4 @@
-const createCourse = (course) =>
+const createCourse = (course) => 
   fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/courses", {
     method: 'POST',
     body: JSON.stringify(course),

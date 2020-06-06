@@ -5,7 +5,8 @@ import LessonTabs from "./LessonTabs";
 import {Link} from "react-router-dom";
 
 // stateless component
-const CourseEditor = () => {
+const CourseEditor = ({match}) => {
+  console.log(match); 
   return(
     <div>
       <div class="container">
@@ -14,7 +15,8 @@ const CourseEditor = () => {
             <i class="fa fa-chevron-left"></i>
             </button>
         </Link>
-        <h1 class="wbdv-course-title">Course Name</h1>
+        <h1 class="wbdv-course-title">
+        {match.params.courseId}</h1>
         <div class="row">
             <div class="col-4">
               <ModuleList></ModuleList>
