@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import courseService from "../services/CourseService"
 import ModuleList from "./ModuleList";
+import ModuleListContainer from "../containers/ModuleListContainer"
 import TopicPills from "./TopicPills"; 
 import LessonTabs from "./LessonTabs"; 
+import CourseService from "../services/CourseService"; 
 
 // stateless component
 const CourseEditor = ({ match }) => {
+  console.log("match"); 
   console.log(match);
   return (
     <div>
@@ -17,16 +20,15 @@ const CourseEditor = ({ match }) => {
           </button>
         </Link>
         <h1 class="wbdv-course-title">
-          course title
+          Course Title
           </h1>
         <div class="row">
-          <ModuleList></ModuleList>
+          <ModuleListContainer {...match} />
           <div class="col-8">
             <LessonTabs></LessonTabs>
             <br />
             <TopicPills></TopicPills>
-            <br />
-            <br />
+            <br /><br />
             Content widgets displaying slides, movies, html, etc.
             </div>
         </div>

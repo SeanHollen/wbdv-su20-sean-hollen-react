@@ -1,15 +1,29 @@
 import React from "react";
 
-const TopicPill = ({name, isActive, selected}) => {
-    let c = "nav-link " + isActive; 
-    if (!selected) {
-        return <li class="nav-item">
-        <a class={c} href="#">{name}</a>
-    </li>
+export default class LessonTab extends React.Component {
+    state = {
+        name: this.props.name,
+        active: this.props.isActive,
+        editing: this.props.selected
     }
-    return <li class="nav-item">
-        <span>
-                <input onChange={(event) => null} value={name} size="10"/>
+
+    setEditing = (editing) =>
+        this.setState({ editing: editing })
+
+    render() {
+        let c = "nav-link "+this.state.active;
+        if (!this.state.editing) {
+            return <li class="nav-item">
+                <a class={c} href="#">
+                    {this.state.name}
+                    <button class="btn btn-light btn-sm" onClick={() => this.setEditing("active")}>
+                        <i class="fa fa-edit"></i></button>
+                </a>
+            </li>
+        }
+        return <li class="nav-item">
+            <span>
+                <input onChange={(event) => null} value={this.state.name} size="10" />
                 <button onClick={null}>
                     Ok
                 </button>
@@ -18,8 +32,7 @@ const TopicPill = ({name, isActive, selected}) => {
                         () => this.props.deleteCourse(this.props.course)}>
                     X
                 </button>
-        </span>
-    </li>
+            </span>
+        </li>
+    }
 }
-
-export default TopicPill

@@ -1,7 +1,7 @@
 import React from "react";
 import TopicPill from "../courseEditorComponents/TopicPill";
 
-const TopicPills = ({ name, isActive }) =>
+const TopicPills = ({}) =>
     <div>
         <ul class="nav nav-tabs wbdv-topic-pill-list">
             <TopicPill name="Topic 1" isActive="active"></TopicPill>

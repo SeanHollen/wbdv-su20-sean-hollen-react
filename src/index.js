@@ -5,9 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from "redux";
 import {Provider, connect} from "react-redux"
-//import '../node_modules/font-awesome/css/font-awesome.css/font-awesome.min.css';
+import lessonReducer from "./reducers/lessonReducer"; 
+import moduleReducer from "./reducers/lessonReducer"; 
+import topicReducer from "./reducers/lessonReducer"; 
 
-const store = createStore(() => ({}))
+const reducers = combineReducers({
+  lessonReducer, moduleReducer, topicReducer
+})
+const store = createStore(reducers)
 
 ReactDOM.render(
   <React.StrictMode>

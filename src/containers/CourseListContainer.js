@@ -79,7 +79,7 @@ class CourseListContainer
       <Link to="../">
       <button class="btn btn-light">
         <i class="fa fa-bars wbdv-field wbdv-hamburger"></i>
-        </button>
+      </button>
       </Link>
         <a class="navbar-brand wbdv-label wbdv-course-manager">Course Manager</a>
       </div>

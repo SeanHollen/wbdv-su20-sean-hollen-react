@@ -1,7 +1,7 @@
 import React from "react";
 import LessonTab from "../courseEditorComponents/LessonTab";
 
-const LessonTabs = ({ name, isActive }) =>
+const LessonTabs = ({}) =>
     <div>
         <ul class="nav nav-tabs">
             <LessonTab name="Lesson A" isActive="active"></LessonTab>

@@ -1,7 +1,7 @@
 import React from "react";
 import Module from "../courseEditorComponents/Module";
 
-const ModuleList = ({ name, isActive }) =>
+const ModuleList = ({}) =>
     <div class="col-4">
         <div>
             <ul class="list-group wbdv-module-list">
