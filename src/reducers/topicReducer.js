@@ -2,37 +2,30 @@ const initialState = {
     topics: []
 }
 
-// fix all here
 const topicReducer = (state = initialState, event) => {
     switch (event.type) {
-        case "UPDATE_TOPIC":
-            return {
-                ...state,
-                modules: state.modules.map(
-                    module => module._id === event.updatedModule._id ?
-                        event.updatedModule : module)
-            }
-        case "FIND_TOPICS_FOR_LESSON":
-            return {
-                ...state,
-                modules: event.modules
-            }
-        case "FIND_TOPIC":
-            console.log(event.modules)
-            return {
-                ...state,
-                modules: event.modules
-            }
-        case "CREATE_TOPIC":
-            return {
-                modules: [
-                    ...state.modules,
-                    event.newModule
-                ]
-            }
         case "DELETE_TOPIC":
             return {
-                modules: state.modules.filter(module => module._id !== event.moduleId)
+                ...state,
+                topics: state.topics.filter(topic => topic._id !== event.topicId)
+            }
+        case "FIND_TOPICS_FOR_MODULE":
+            return {
+                ...state,
+                topics: event.actualTopics
+            }
+        case "UPDATE_TOPIC": 
+            return {
+                ...state,
+                topics: state.topics.map(
+                    topic => topic._id === event.updatedTopic._id ?
+                        event.updatedTopic : topic)
+            }
+        case "CREATE_TOPIC":
+            console.log("creating"); 
+            return {
+                ...state, 
+                topics: [...state.topics, event.newTopic]
             }
         default:
             return state

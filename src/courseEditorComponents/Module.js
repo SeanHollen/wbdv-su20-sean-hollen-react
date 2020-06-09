@@ -3,7 +3,7 @@ import React from "react";
 export default class Module extends React.Component {
     state = {
         active: this.props.isActive, 
-        editing: this.props.selected, 
+        editing: false, 
         editingModule: this.props.module
     }
 

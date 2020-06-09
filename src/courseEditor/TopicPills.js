@@ -15,18 +15,21 @@ export default class TopicPills extends React.Component {
         }
     }
     render() {
-        console.log("x"); 
-        console.log(this.props); 
         return <div>
             <ul class="nav nav-tabs wbdv-topic-pill-list">
                 {this.props.topics.map(topicPill =>
                     <TopicPill
-                        topicPill={topicPill}
+                        topic={topicPill}
                         deleteTopic={this.props.deleteTopic}
                         updateTopic={this.props.updateTopic} />)
                 }
                 <li class="nav-item">
-                    <a class="nav-link" href="#" ><i class="fa fa-plus"></i></a>
+                    <a class="nav-link" href="#" onClick={() => {
+                        this.props.createTopic(this.props.params.lessonId,
+                            {
+                                title: this.state.newTopicTitle
+                            })
+                    }}><i class="fa fa-plus"></i></a>
                 </li>
             </ul>
         </div>

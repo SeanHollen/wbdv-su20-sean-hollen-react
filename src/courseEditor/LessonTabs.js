@@ -15,8 +15,6 @@ export default class LessonTabs extends React.Component {
         }
     }
     render() {
-        console.log("y"); 
-        console.log(this.props); 
         return <div>
             <ul class="nav nav-tabs">
                 {this.props.lessons.map(lesson =>

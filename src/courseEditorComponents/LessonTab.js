@@ -3,12 +3,9 @@ import React from "react";
 export default class LessonTab extends React.Component {
     state = {
         active: this.props.isActive,
-        editing: this.props.selected,
+        editing: false,
         editingLesson: this.props.lesson
     }
-
-    setEditing = (editing) =>
-        this.setState({ editing: editing })
 
     render() {
         let c = "nav-link wbdv-page-tab " + this.state.active;
@@ -16,7 +13,7 @@ export default class LessonTab extends React.Component {
             return <li class="nav-item">
                 <a class={c} href="#">
                     {this.state.editingLesson.title}
-                    <button class="btn btn-light btn-sm" onClick={() => this.setEditing("active")}>
+                    <button class="btn btn-light btn-sm" onClick={() => this.state.editing = true}>
                         <i class="fa fa-edit"></i></button>
                 </a>
             </li>
@@ -37,8 +34,9 @@ export default class LessonTab extends React.Component {
                     }
                 } value={this.state.editingLesson.title} size="10" />
                     <button onClick={() => {
-                        this.props.updateLesson(this.props.lesson._id, this.state.editingLesson); 
-                        this.state.editing = false; 
+                        this.props.updateLesson(
+                        this.props.lesson._id, this.state.editingLesson); 
+                        this.state.editing = false;
                     }}>
                         Ok
                 </button>

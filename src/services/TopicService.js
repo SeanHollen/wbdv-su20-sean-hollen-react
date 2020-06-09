@@ -12,10 +12,6 @@ const findTopicsForLesson = (lessonId) =>
     fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/lessons/"+lessonId+"/topics")
         .then(response => response.json())
 
-const findTopic = (topicId) => 
-    fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/topics/" + topicId)
-            .then(response => response.json())
-
 const updateTopic = (topicId, topic) =>
     fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/topics/" + topicId, {
         method: 'PUT',
@@ -35,7 +31,6 @@ const deleteTopic = (topicId) =>
 export default {
     createTopic,
     findTopicsForLesson, 
-    findTopic, 
     updateTopic, 
     deleteTopic,
 }

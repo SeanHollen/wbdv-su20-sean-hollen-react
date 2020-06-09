@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import ModuleListContainer from "../containers/ModuleListContainer"
-import TopicListContainer from  "../containers/TopicListContainer"
+import TopicListContainer from "../containers/TopicListContainer"
 import LessonListContainer from "../containers/LessonListContainer"
 
 // stateless component
@@ -16,7 +16,7 @@ const CourseEditor = ({ match }) => {
         </Link>
         <h1 class="wbdv-course-title">
           Course Title
-          </h1>
+            </h1>
         <div class="row">
           <ModuleListContainer {...match} />
           <div class="col-8">
@@ -25,7 +25,7 @@ const CourseEditor = ({ match }) => {
             <TopicListContainer {...match} />
             <br /><br />
             Content widgets displaying slides, movies, html, etc.
-            </div>
+              </div>
         </div>
       </div>
     </div>
@@ -33,3 +33,4 @@ const CourseEditor = ({ match }) => {
 }
 
 export default CourseEditor
+

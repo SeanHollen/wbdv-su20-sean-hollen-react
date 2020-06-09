@@ -20,11 +20,12 @@ const dispatchToPropertyMapper = (dispatch) => {
             actualTopics
           }))
       },
-      updateTopic: (topicId, newTopicData) => {
-        TopicService.updateTopic(topicId, newTopicData)
+      updateTopic: (topicId, updatedTopic) => {
+        TopicService.updateTopic(topicId, updatedTopic)
           .then(status => dispatch({
             type: 'UPDATE_TOPIC',
-            updatedTopic: newTopicData
+            //updatedTopic: updatedTopic
+            updatedTopic
           }))
       },
       createTopic: (lessonId, newTopic) => {

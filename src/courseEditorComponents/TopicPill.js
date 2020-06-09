@@ -1,35 +1,53 @@
 import React from "react";
 
-export default class LessonTab extends React.Component {
+export default class TopicPill extends React.Component {
     state = {
-        name: this.props.name,
         active: this.props.isActive,
-        editing: this.props.selected
+        editing: false,
+        editingTopic: this.props.topic
     }
 
-    setEditing = (editing) =>
-        this.setState({ editing: editing })
-
     render() {
-        let c = "nav-link "+this.state.active;
+        let c = "nav-link " + this.state.active;
         if (!this.state.editing) {
             return <li class="nav-item">
                 <a class={c} href="#">
-                    {this.state.name}
-                    <button class="btn btn-light btn-sm" onClick={() => this.setEditing("active")}>
+                    {this.state.editingTopic.title}
+                    <button class="btn btn-light btn-sm"
+                        onClick={() => this.state.editing = true}>
                         <i class="fa fa-edit"></i></button>
                 </a>
             </li>
         }
         return <li class="nav-item">
             <span>
-                <input onChange={(event) => null} value={this.state.name} size="10" />
-                <button onClick={null}>
+                <input
+                    onChange={(e) => {
+                        const newTitle = e.target.value
+                        this.setState(prevState => ({
+                            active: prevState.active,
+                            editing: this.state.editing,
+                            editingTopic: {
+                                ...prevState.editingTopic,
+                                title: newTitle
+                            }
+                        }))
+                    }
+                    } value={this.state.editingTopic.title} size="10" />
+                <button onClick={() => {
+                    this.props.updateTopic(
+                        this.props.topic._id, this.state.editingTopic);
+                        this.state.editing = false;
+                        console.log(this.state.editing); 
+                }}>
                     Ok
                 </button>
                 <button
                     onClick={
-                        () => this.props.deleteCourse(this.props.course)}>
+                        () => {
+                            this.props.deleteTopic(this.props.topic._id);
+                            this.state.editing = false;
+                        }}>
                     X
                 </button>
             </span>
