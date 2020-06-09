@@ -1,38 +1,32 @@
 
 const initialState = {
-    lessons: [
-        { _id: '123', title: 'lesson 123' },
-        { _id: '234', title: 'lesson 234' },
-        { _id: '345', title: 'lesson 345' }
-    ]
+    lessons: []
 }
 
-const lessonReducer = (state = initialState, action) => {
-    switch (action.type) {
+const lessonReducer = (state = initialState, event) => {
+    switch (event.type) {
         case "DELETE_LESSON":
             return {
                 ...state,
-                lessons: state.lessons.filter(lesson => lesson._id !== action.lessonId)
+                lessons: state.lessons.filter(lesson => lesson._id !== event.lessonId)
             }
         case "FIND_LESSONS_FOR_MODULE":
             return {
                 ...state,
-                lessons: action.actualLessons
+                lessons: event.actualLessons
             }
-        case "FIND_LESSON": // fix
+        case "UPDATE_LESSON": 
             return {
                 ...state,
-                lessons: action.actualLessons
-            }
-        case "UPDATE_LESSON": // fix
-            return {
-                ...state,
-                lessons: action.actualLessons
+                lessons: state.lessons.map(
+                    lesson => lesson._id === event.updatedLesson._id ?
+                        event.updatedLesson : lesson)
             }
         case "CREATE_LESSON":
+            console.log("creating"); 
             return {
-                ...state,
-                lessons: [...state.lessons, action.newLesson]
+                ...state, 
+                lessons: [...state.lessons, event.newLesson]
             }
         default:
             return state

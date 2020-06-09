@@ -8,11 +8,11 @@ const createLesson = (moduleId, lesson) =>
     })
         .then(response => response.json())
 
-const findLessonsForCourse = (moduleId) => 
+const findLessonsForModule = (moduleId) => 
     fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/modules/" + moduleId + "/lessons ")
         .then(response => response.json())
 
-const findLesson = (lessonId) => 
+const findLesson = (lessonId) =>
     fetch("https://wbdv-generic-server.herokuapp.com/api/001284396/lessons/" + lessonId)
             .then(response => response.json())
 
@@ -34,7 +34,7 @@ const deleteLesson = (lessonId) =>
 
 export default {
     createLesson,
-    findLessonsForCourse, 
+    findLessonsForModule, 
     findLesson, 
     updateLesson, 
     deleteLesson,

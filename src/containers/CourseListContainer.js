@@ -73,7 +73,7 @@ class CourseListContainer
     console.log(this.props)
 
     return (
-      <div>
+      <div class="container">
       <nav class="navbar navbar-dark bg-dark">
       <div>
       <Link to="../">

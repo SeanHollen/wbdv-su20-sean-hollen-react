@@ -3,7 +3,6 @@
 // (S1) --e2--> (S3)
 
 const initialState = {
-    newModuleTitle: 'Some Module',
     modules: []
 }
 
@@ -22,7 +21,6 @@ const moduleReducer = (state = initialState, event) => {
                 modules: event.modules
             }
         case "FIND_MODULE":
-            console.log(event.modules)
             return {
                 modules: state.modules.find(
                     module => module._id === event.updatedModule._id)

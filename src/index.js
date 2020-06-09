@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from "redux";
 import {Provider, connect} from "react-redux"
 import lessonReducer from "./reducers/lessonReducer"; 
-import moduleReducer from "./reducers/lessonReducer"; 
-import topicReducer from "./reducers/lessonReducer"; 
+import moduleReducer from "./reducers/moduleReducer"; 
+import topicReducer from "./reducers/topicReducer"; 
 
 const reducers = combineReducers({
   lessonReducer, moduleReducer, topicReducer

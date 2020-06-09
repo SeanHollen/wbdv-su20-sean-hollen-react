@@ -1,5 +1,5 @@
 const initialState = {
-    modules: []
+    topics: []
 }
 
 // fix all here

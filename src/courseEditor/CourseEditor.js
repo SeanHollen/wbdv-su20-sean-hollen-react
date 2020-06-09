@@ -1,19 +1,14 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import courseService from "../services/CourseService"
-import ModuleList from "./ModuleList";
 import ModuleListContainer from "../containers/ModuleListContainer"
-import TopicPills from "./TopicPills"; 
-import LessonTabs from "./LessonTabs"; 
-import CourseService from "../services/CourseService"; 
+import TopicListContainer from  "../containers/TopicListContainer"
+import LessonListContainer from "../containers/LessonListContainer"
 
 // stateless component
 const CourseEditor = ({ match }) => {
-  console.log("match"); 
-  console.log(match);
   return (
-    <div>
-      <div class="container">
+    <div class="container">
+      <div>
         <Link to="/table/courses">
           <button class="wbdv-course-editor wbdv-close">
             <i class="fa fa-chevron-left"></i>
@@ -25,15 +20,14 @@ const CourseEditor = ({ match }) => {
         <div class="row">
           <ModuleListContainer {...match} />
           <div class="col-8">
-            <LessonTabs></LessonTabs>
+            <LessonListContainer {...match} />
             <br />
-            <TopicPills></TopicPills>
+            <TopicListContainer {...match} />
             <br /><br />
             Content widgets displaying slides, movies, html, etc.
             </div>
         </div>
       </div>
-
     </div>
   )
 }
