@@ -1,33 +1,48 @@
-import widgets from ""; 
 
-export default class WidgetService {
-    static myInstance = null; 
-    static getInstance() {
-        if (widget.myInstance == null) {
-            WidgetService.myInstance = new WidgetService();
+const createWidget = (tId, w) => {
+    fetch("http://localhost:8080/api" + tId + "/widget", {
+        method: 'POST',
+        body: JSON.stringify(w),
+        headers: {
+            "content-type": "application/json"
         }
-        return this.myInstance;
-    }
+    }).then(
+        response => response.json()
+    )
+}
 
-    createWidget(w) {
-        widgets.push(w); 
-    }
+const findAllWidgets = () => {
+    fetch("http://localhost:8080/api/widgets").then(
+        response => response.json()
+    )
+}
 
-    findAllWidgets() {
-        fetch("http://localhost:8080/api/widgets").then(
-            response => response.json()
-        )
-    }
+const findWidgetsForTopic = (tId) => {
+    fetch("http://localhost:8080/api/topics/" + tId + "/widgets").then(
+        (response => response.json())
+    )
+}
 
-    findWidgetById() {
+const deleteWidget = (wId) =>
+    fetch("http://localhost:8080/api/widgets" + wId, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
 
-    }
+const updateWidget = (wId, widget) =>
+    fetch("http://localhost:8080/api/widgets" + wId, {
+        method: 'PUT',
+        body: JSON.stringify(widget),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
 
-    deleteWidget() {
-
-    }
-
-    updateWidget() {
-
-    }
+export default {
+    createWidget,
+    deleteWidget,
+    updateWidget,
+    findAllWidgets,
+    findWidgetsForTopic
 }

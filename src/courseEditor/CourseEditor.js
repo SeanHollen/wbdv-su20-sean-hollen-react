@@ -25,7 +25,7 @@ const CourseEditor = ({ match }) => {
             <br />
             <TopicListContainer {...match} />
             <br /><br />
-            <WidgetListContainer />
+            <WidgetListContainer {...match} />
               </div>
         </div>
       </div>

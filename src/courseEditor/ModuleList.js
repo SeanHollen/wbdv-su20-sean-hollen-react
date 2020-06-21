@@ -7,8 +7,6 @@ export default class ModuleList extends React.Component {
     }
     componentDidMount() {
         this.props.findModulesForCourse(this.props.params.courseId);
-        console.log("props 1")
-        console.log(this.props); 
     }
     componentDidUpdate() {
         this.props.findModulesForCourse(this.props.params.courseId);

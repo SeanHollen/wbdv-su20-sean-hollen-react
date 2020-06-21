@@ -12,5 +12,10 @@ code {
     monospace;
 }
 
+.widget {
+  background-color: grey;
+  padding: 10px;
+}
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 

@@ -1,22 +1,51 @@
-import React from "react"; 
-import WidgetListComponent from "../components/WidgetListComponent"; 
-import { connect } from "react-redux"; 
 import service from "../services/WidgetService"; 
-const widgetService = service.getInstance(); 
+import {connect} from "react-redux";
+import WidgetListComponent from "../components/WidgetComponent"; 
 
-const stateToPropertyMapper = state => ({
-    widgets: state.widgets
+const stateToPropertyMapper = (state) => ({
+  widgets: state.widgetReducer.widgets
 })
 
-const propertoToDispatchMapper = dispatch => ({
-    findAllWidgets: () => 
-    widgetService.findAllWidgets().then(widgets => 
-        dispatch({type: "FIND_ALL_WIDGETS", widgets: widgets})
-    )
+const dispatchToPropertyMapper = (dispatcher) => ({
+  updateWidget: (wid, widget) => {
+    dispatcher({
+      type: "UPDATE_WIDGET",
+      wid: wid,
+      widget: widget
+    })
+  },
+  createWidget: (tid, widget) =>
+    service.createWidget(tid, widget)
+      .then(actualNewWidgetFromServer =>
+        dispatcher({
+          type: "CREATE_WIDGET",
+          widget: actualNewWidgetFromServer
+        })
+      ),
+  deleteWidget: (wid) =>
+    service.deleteWidget(wid)
+      .then(status =>
+        dispatcher({
+          type: "DELETE_WIDGET",
+          widgetId: wid
+      })),
+  findWidgetsForTopic: (tid) =>
+    service.findWidgetsForTopic(tid)
+      .then(actualWidgetsFromServer =>
+        dispatcher({
+          type: "FIND_WIDGETS_FOR_TOPIC",
+          widgetsFromServer: actualWidgetsFromServer
+        }))
 })
 
-const WidgetListContainer = connect(
-    stateToPropertyMapper, propertoToDispatchMapper
-)(WidgetListComponent)
+export default connect(
+  stateToPropertyMapper,
+  dispatchToPropertyMapper)
+(WidgetListComponent)
 
-export default WidgetListContainer 
+
+
+
+
+
+

@@ -1,19 +1,36 @@
-import WidgetService from '.services/WidgetService';
-const service = WidgetService.getInstance();
-let widgets = service.findAllWidgets();
-
-const WidgetReducer = (state = { widgets: [] }, action) => {
+const initialState = {
+    widgets: [
+      {id: 123, name: 'Widget AAA'},
+      {id: 234, name: 'Widget BBB'},
+      {id: 345, name: 'Widget CCC'}
+    ]
+  }
+  
+  const widgetReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "CREATE WIDGET":
-            break;
-        case "FIND_ALL_WIDGETS":
-            return {
-                action: action.widgets
-            }
-            break;
-        default:
-            return state;
+      case "UPDATE_WIDGET":
+        return {
+          ...state,
+          widgets: state.widgets.map(widget => widget.id === action.wid ? action.widget : widget)
+        }
+      case "CREATE_WIDGET":
+        return {
+          ...state,
+          widgets: [...state.widgets, action.widget]
+        }
+      case "FIND_WIDGETS_FOR_TOPIC":
+        return {
+          ...state,
+          widgets: action.widgetsFromServer
+        }
+      case "DELETE_WIDGET":
+        return {
+          ...state,
+          widgets: state.widgets.filter(widget => widget.id !== action.widgetId)
+        }
+      default:
+        return state
     }
-}
-
-export default WidgetReducer; 
+  }
+  
+  export default widgetReducer
