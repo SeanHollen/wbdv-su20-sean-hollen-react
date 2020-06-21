@@ -17,15 +17,13 @@ const findAllWidgets = () => {
     )
 }
 
-const findWidgetsForTopic = (tId) => {
-    fetch("http://localhost:8080/api/topics/" + tId + "/widgets").then(
-        (response => response.json())
-    )
-}
+const findWidgetsForTopic = (tid) =>
+  fetch(`http://localhost:8080/api/topics/${tid}/widgets`)
+    .then(response => response.json())
 
-const deleteWidget = (wId) =>
-    fetch("http://localhost:8080/api/widgets" + wId, {
-        method: 'DELETE'
+const deleteWidget = (wId) => 
+    fetch("http://localhost:8080/api/widgets/" + wId, {
+        method: 'DELETE',
     })
         .then(response => response.json())
 

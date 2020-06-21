@@ -6,9 +6,9 @@ const stateToPropertyMapper = (state) => ({
   widgets: state.widgetReducer.widgets
 })
 
-const dispatchToPropertyMapper = (dispatcher) => ({
+const dispatchToPropertyMapper = (dispatch) => ({
   updateWidget: (wid, widget) => {
-    dispatcher({
+    dispatch({
       type: "UPDATE_WIDGET",
       wid: wid,
       widget: widget
@@ -17,25 +17,25 @@ const dispatchToPropertyMapper = (dispatcher) => ({
   createWidget: (tid, widget) =>
     service.createWidget(tid, widget)
       .then(actualNewWidgetFromServer =>
-        dispatcher({
+        dispatch({
           type: "CREATE_WIDGET",
           widget: actualNewWidgetFromServer
         })
       ),
-  deleteWidget: (wid) =>
+  deleteWidget: (wid) => 
     service.deleteWidget(wid)
       .then(status =>
-        dispatcher({
+        dispatch({
           type: "DELETE_WIDGET",
           widgetId: wid
       })),
-  findWidgetsForTopic: (tid) =>
+  findWidgetsForTopic: (tid) => {
     service.findWidgetsForTopic(tid)
-      .then(actualWidgetsFromServer =>
-        dispatcher({
+      .then(actualWidgetsFromServer => 
+        dispatch({
           type: "FIND_WIDGETS_FOR_TOPIC",
           widgetsFromServer: actualWidgetsFromServer
-        }))
+        }))}
 })
 
 export default connect(

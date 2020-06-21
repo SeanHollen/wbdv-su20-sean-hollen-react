@@ -1,8 +1,5 @@
 const initialState = {
     widgets: [
-      {id: 123, name: 'Widget AAA'},
-      {id: 234, name: 'Widget BBB'},
-      {id: 345, name: 'Widget CCC'}
     ]
   }
   
