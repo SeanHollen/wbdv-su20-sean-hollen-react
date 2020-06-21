@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ModuleListContainer from "../containers/ModuleListContainer"
 import TopicListContainer from "../containers/TopicListContainer"
 import LessonListContainer from "../containers/LessonListContainer"
+import WidgetListContainer from "../containers/WidgetListContainer"
 
 // stateless component
 const CourseEditor = ({ match }) => {
@@ -24,7 +25,7 @@ const CourseEditor = ({ match }) => {
             <br />
             <TopicListContainer {...match} />
             <br /><br />
-            Content widgets displaying slides, movies, html, etc.
+            <WidgetListContainer />
               </div>
         </div>
       </div>
