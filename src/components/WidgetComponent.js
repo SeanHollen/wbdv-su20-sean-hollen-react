@@ -1,7 +1,8 @@
 import React from "react";
 
 export default class WidgetComponent extends React.Component {
-    render() { return <div class="widget">
+    render() {
+        return <div class="widget">
             <h3 style={{ display: 'inline-block' }}>List Widget</h3>
             <div style={{ float: 'right' }}>
                 <button className="btn btn-success"><i class="fa fa-arrow-up"></i></button>

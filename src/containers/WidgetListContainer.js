@@ -1,6 +1,6 @@
 import service from "../services/WidgetService"; 
 import {connect} from "react-redux";
-import WidgetListComponent from "../components/WidgetComponent"; 
+import WidgetListComponent from "../components/WidgetListComponent"; 
 
 const stateToPropertyMapper = (state) => ({
   widgets: state.widgetReducer.widgets

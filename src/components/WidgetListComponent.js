@@ -13,16 +13,16 @@ export default class WidgetListComponent extends React.Component {
         WidgetService.findWidgetsForTopic("Topic1");
     }
     render() {
+        console.log(this.props.widgets.length); 
         return (
             <div class="container">
-                <ul>
                 {
                     this.props.widgets.map(
-                        widget =>
-                            <li><WidgetComponent widget={widget} /></li>
+                        widget => <div>
+                            <WidgetComponent widget={widget} /><br></br>
+                            </div>
                     )
                 }
-                </ul>
             </div>
         )
     }
