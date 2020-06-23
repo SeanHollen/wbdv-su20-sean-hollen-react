@@ -5,9 +5,6 @@ import WidgetComponent from "./WidgetComponent";
 export default class WidgetListComponent extends React.Component {
     state = {
         path: this.props.params.path,
-        updated: [],
-        deleted: [],
-        added: [],
         preview: false
     }
 
@@ -15,26 +12,8 @@ export default class WidgetListComponent extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
+    serviceFindWidgetsForTopic() {
         this.props.findWidgetsForTopic("Topic1");
-    }
-
-    delWidget(widget) {
-        console.log("test"); 
-        console.log(this.state); 
-        this.setState({deleted: this.state.deleted.concat(widget)});
-    }
-
-    addWidget() {
-        let newWidget = { id: Math.random() * 1000, name: "", type: "PARAGRAPH", topic: "Topic1", style: "", text: "" };
-        this.props.widgets.push(newWidget);
-        this.setState({ added: this.state.added.concat(newWidget) });
-    }
-
-    save() {
-        // for (let i = 0; i < this.props.widgets; i++) {
-        //     this.props.updateWidget(this.props.widgets[i].id, this.props.widgets[i]);
-        // }
     }
 
     toggle() {
@@ -44,9 +23,9 @@ export default class WidgetListComponent extends React.Component {
     render() {
         return (
             <div class="container">
-                <button onClick={this.save}
+                <button onClick={() => this.props.save()}
                     className="btn btn-success">Save</button>
-                <button onClick={() => this.addWidget()}
+                <button onClick={() => this.props.createWidget("Topic1", {style: "h3", id: (Math.random() * 100)})}
                     className="btn btn-success">Add Widget</button>
                 <div style={{ display: 'inline-block' }} class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitches"
@@ -59,7 +38,7 @@ export default class WidgetListComponent extends React.Component {
                             <br></br>
                             <WidgetComponent
                                 widget={widget}
-                                deleteWidget={this.delWidget}
+                                deleteWidget={this.props.deleteWidget}
                                 preview={this.state.preview} />
                         </div>
                     )

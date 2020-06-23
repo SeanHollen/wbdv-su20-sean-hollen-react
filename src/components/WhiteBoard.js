@@ -42,4 +42,8 @@ class WhiteBoard extends React.Component {
   }
 }
 
+export const C = (a, b) => (a+b)
+
+
+
 export default WhiteBoard

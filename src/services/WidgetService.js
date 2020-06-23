@@ -1,6 +1,6 @@
 
 const createWidget = (tId, w) => {
-    fetch("http://localhost:8080/api" + tId + "/widget", {
+    fetch("http://localhost:8080/api/" + tId + "/widget", {
         method: 'POST',
         body: JSON.stringify(w),
         headers: {
@@ -28,7 +28,7 @@ const deleteWidget = (wId) =>
         .then(response => response.json())
 
 const updateWidget = (wId, widget) =>
-    fetch("http://localhost:8080/api/widgets" + wId, {
+    fetch("http://localhost:8080/api/widgets/" + wId, {
         method: 'PUT',
         body: JSON.stringify(widget),
         headers: {

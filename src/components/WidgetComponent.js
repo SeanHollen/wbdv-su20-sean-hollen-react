@@ -36,7 +36,7 @@ export default class WidgetComponent extends React.Component {
                 <button className="btn btn-success"><i class="fa fa-arrow-up"></i></button>
                 <button className="btn btn-success"><i class="fa fa-arrow-down"></i></button>
                 <button onClick={() =>
-                    this.props.deleteWidget(this.props.widget.id)}
+                    this.props.deleteWidget(this.props.widget)}
                     className="btn btn-success">X</button>
                 <select className="btn btn-success" onChange={(e) => this.setType(e.target.value)}>
                     <option value=""></option>
