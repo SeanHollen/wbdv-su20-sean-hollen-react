@@ -20,6 +20,7 @@ const widgetReducer = (state = initialState, action) => {
         createdWidgets: [...state.createdWidgets, action.widget]
       }
     case "FIND_WIDGETS_FOR_TOPIC":
+      console.log(action.widgetsFromServer); 
       return {
         ...state,
         widgets: action.widgetsFromServer
@@ -31,9 +32,6 @@ const widgetReducer = (state = initialState, action) => {
         deletedWidgets: [...state.deletedWidgets, action.widget]
       }
     case "SAVE":
-      console.log("next"); 
-      console.log(state.widgets); 
-      console.log(state.createdWidgets); 
       for (let i = 0; i < state.createdWidgets.length; i++) {
         service.createWidget("Topic1", state.createdWidgets[i]);
       }

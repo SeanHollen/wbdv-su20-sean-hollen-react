@@ -12,7 +12,7 @@ export default class WidgetListComponent extends React.Component {
         super(props);
     }
 
-    serviceFindWidgetsForTopic() {
+    componentWillMount() {
         this.props.findWidgetsForTopic("Topic1");
     }
 

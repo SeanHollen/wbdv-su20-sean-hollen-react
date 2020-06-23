@@ -1,6 +1,6 @@
 
 const createWidget = (tId, w) => {
-    fetch("http://localhost:8080/api/" + tId + "/widget", {
+    fetch(`http://localhost:8080/api/topics/${tId}/widget`, {
         method: 'POST',
         body: JSON.stringify(w),
         headers: {
